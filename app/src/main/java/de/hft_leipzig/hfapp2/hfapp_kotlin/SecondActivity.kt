@@ -156,6 +156,10 @@ class SecondActivity : AppCompatActivity() {
                 adapter.toExport[it].sessionID!!
             }
 
+            val exportDir = File(context?.getExternalFilesDir(null)?.absolutePath.toString(), "")
+            if (!exportDir.exists()) {
+                exportDir.mkdirs()
+            }
 
             val formatter = SimpleDateFormat("YYYY-MM-dd_HH-mm-ss", Locale.US)
             val saveFilename = "hfapp2_${formatter.format(Date())}.csv"
